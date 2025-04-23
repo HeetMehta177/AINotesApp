@@ -6,16 +6,33 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { summarizeNote } from "@/lib/summarize";
 
 export default function DashboardPage() {
   const queryClient = useQueryClient();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [summaries, setSummaries] = useState<{ [id: string]: string }>({});
+  const [loadingSummaries, setLoadingSummaries] = useState<{
+    [id: string]: boolean;
+  }>({});
 
   const { data: notes, isLoading } = useQuery({
     queryKey: ["notes"],
     queryFn: fetchNotes,
   });
+
+  const handleSummarize = async (note: any) => {
+    setLoadingSummaries((prev) => ({ ...prev, [note.id]: true }));
+    try {
+      const summary = await summarizeNote(note.content);
+      setSummaries((prev) => ({ ...prev, [note.id]: summary }));
+    } catch (err) {
+      console.error("Failed to summarize:", err);
+    } finally {
+      setLoadingSummaries((prev) => ({ ...prev, [note.id]: false }));
+    }
+  };
 
   const createMutation = useMutation({
     mutationFn: createNote,
@@ -79,12 +96,22 @@ export default function DashboardPage() {
                 })
               }
             />
-            <Button
-              variant="destructive"
-              onClick={() => deleteMutation.mutate(note.id)}
-            >
-              Delete
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                variant="destructive"
+                onClick={() => deleteMutation.mutate(note.id)}
+              >
+                Delete
+              </Button>
+              <Button onClick={() => handleSummarize(note)}>
+                {loadingSummaries[note.id] ? "Summarizing..." : "Summarize"}
+              </Button>
+            </div>
+            {summaries[note.id] && (
+              <div className="mt-2 p-2 rounded-md bg-gray-100 text-sm">
+                <strong>Summary:</strong> {summaries[note.id]}
+              </div>
+            )}
           </div>
         ))}
       </div>
