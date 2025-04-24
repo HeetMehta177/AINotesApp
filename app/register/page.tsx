@@ -56,65 +56,86 @@ export default function Page({
     }
   };
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <div className="w-full max-w-sm animate-fade-in">
         <div className="flex flex-col gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Sign up for an account</CardTitle>
-              <CardDescription>Enter your details below</CardDescription>
+          <Card className="border-indigo-100 bg-white/80 backdrop-blur-sm shadow-xl transition-all hover:shadow-indigo-100/20">
+            <CardHeader className="space-y-1">
+              <CardTitle className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Sign up for an account
+              </CardTitle>
+              <CardDescription className="text-gray-500">
+                Enter your details below
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <form
                 onSubmit={form.handleSubmit(register)}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 animate-fade-in-up"
               >
                 <div className="grid gap-3">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-indigo-700">
+                    Email
+                  </Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="example@ainotes.com"
                     {...form.register("email")}
+                    className="border-indigo-100 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200 transition-all shadow-sm"
                   />
                   {form.formState.errors.email && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-rose-500 text-sm animate-fade-in">
                       {form.formState.errors.email.message}
                     </p>
                   )}
                 </div>
                 <div className="grid gap-3">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password" className="text-indigo-700">
+                    Password
+                  </Label>
                   <Input
                     id="password"
                     type="password"
                     {...form.register("password")}
+                    className="border-indigo-100 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200 transition-all shadow-sm"
                   />
                   {form.formState.errors.password && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-rose-500 text-sm animate-fade-in">
                       {form.formState.errors.password.message}
                     </p>
                   )}
                 </div>
                 <div className="grid gap-3">
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Label htmlFor="confirmPassword" className="text-indigo-700">
+                    Confirm Password
+                  </Label>
                   <Input
                     id="confirmPassword"
                     type="password"
                     {...form.register("confirmPassword")}
+                    className="border-indigo-100 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-200 transition-all shadow-sm"
                   />
                   {form.formState.errors.confirmPassword && (
-                    <p className="text-red-500 text-sm">
+                    <p className="text-rose-500 text-sm animate-fade-in">
                       {form.formState.errors.confirmPassword.message}
                     </p>
                   )}
                 </div>
-                <Button type="submit" className="w-full">
+                <Button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-800 text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                >
                   Sign Up
                 </Button>
                 <div className="mt-4 text-center text-sm">
-                  Already have an account?{" "}
-                  <a href="/login" className="underline underline-offset-4">
+                  <span className="text-gray-500">
+                    Already have an account?
+                  </span>{" "}
+                  <a
+                    href="/login"
+                    className="text-indigo-600 hover:text-indigo-800 underline underline-offset-4 transition-colors"
+                  >
                     Login
                   </a>
                 </div>
