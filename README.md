@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-Powered Notes App
+
+A modern note-taking application built with Next.js 14, featuring AI-powered features for enhanced productivity.
+
+## Features
+
+- 📝 Create, edit, and organize notes
+- 🤖 AI-powered summarizer
+- 🎯 Real-time updates and autosave
+- 📱 Responsive design for all devices
+
+## Tech Stack
+
+- **Framework:** Next.js 14
+- **Styling:** Tailwind CSS
+- **Database:** [Your database choice]
+- **Authentication:** [Your auth solution]
+- **AI Integration:** [Your AI service]
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+
+```bash
+git clone 'https://github.com/HeetMehta177/AINotesApp.git'
+cd ai-notes
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in your environment variables in `.env.local`
+
+4. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+ai-notes/
+├── app/              # Next.js app directory
+├── components/       # Reusable UI components
+├── lib/             # Utility functions and configs
+├── public/          # Static assets
+└── styles/          # Global styles
+```
 
-## Learn More
+## Implementation Details
 
-To learn more about Next.js, take a look at the following resources:
+This Notes App leverages Next.js 14's server components and app router for optimal performance. The application implements:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Server-side rendering for faster page loads
+- API routes for backend functionality
+- [Your database] for data persistence
+- Real-time updates using [Your solution]
+- AI integration for smart features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Your chosen license]
+
+## Deployment
+
+Deploy your own version of the Notes App using [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/project?template=[your-repo-url])
+
+---
+
+Built with ❤️ using Next.js
