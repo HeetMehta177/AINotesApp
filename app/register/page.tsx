@@ -31,10 +31,7 @@ const formSchema = z
   });
 
 type FormData = z.infer<typeof formSchema>;
-export default function Page({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export default function Page() {
   const router = useRouter();
 
   const form = useForm<FormData>({

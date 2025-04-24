@@ -13,7 +13,11 @@ import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-
+interface UpdateNoteParams {
+  id: string;
+  title: string;
+  content: string;
+}
 export default function Home() {
   const { user } = useAuth();
   const router = useRouter();
@@ -58,9 +62,9 @@ export default function Home() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, title, content }: any) =>
+    mutationFn: ({ id, title, content }: UpdateNoteParams) =>
       updateNote(id, { title, content }),
-    onSuccess: (updatedNote) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["notes"] });
       setSelectedNote(null);
     },

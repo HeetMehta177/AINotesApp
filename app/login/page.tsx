@@ -13,10 +13,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
-export default function Page({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export default function Page() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
