@@ -12,6 +12,8 @@ export const fetchNotes = async () => {
 
 export const createNote = async (note: { title: string; content: string }) => {
   const user = (await supabase.auth.getUser()).data.user;
+  if (!user) throw new Error("Not authenticated");
+
   const { data, error } = await supabase
     .from("notes")
     .insert([{ ...note, user_id: user?.id }])
